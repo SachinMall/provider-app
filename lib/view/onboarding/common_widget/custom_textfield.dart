@@ -3,8 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 
 class CustomInputField extends StatelessWidget {
-  final String title;
-  final String subtitle;
   final String? initialValue;
   final Function(String) onChanged;
   final Function(String)? onSubmit;
@@ -12,7 +10,7 @@ class CustomInputField extends StatelessWidget {
   final TextInputType textInputType;
   final bool readOnly;
   final bool isEnabled;
-  final String hintText;
+  final String labelText;
   final String? Function(String?) validator;
   final TextEditingController? textController;
   final bool obscureText;
@@ -25,12 +23,10 @@ class CustomInputField extends StatelessWidget {
   final String? suffixText;
   final Color fillColor;
   final void Function()? onTap;
-  final TextStyle? hintstyle;
   final Widget? prefixIcon;
   final bool isEditIcon;
   final void Function()? onEditTap;
   final List<TextInputFormatter>? inputFormatter;
-  final bool isStyle;
 
   const CustomInputField({
     super.key,
@@ -38,33 +34,28 @@ class CustomInputField extends StatelessWidget {
     this.onSubmit,
     this.onSaved,
     this.initialValue,
-    required this.title,
     required this.textInputType,
     this.readOnly = false,
     this.isEnabled = true,
-    this.hintText = '',
+    this.labelText = '',
     required this.validator,
     this.textController,
     this.obscureText = false,
     this.isViewButtonRequired = false,
     this.maxLength,
     this.maxLines = 1,
-    this.subtitle = "",
     this.isCounttextRequired = false,
     this.isAutoValidteRequired = false,
     this.isSuffixIcon,
     this.suffixText,
     this.prefixIcon,
     this.onTap,
-    this.hintstyle,
     this.isEditIcon = false,
     this.onEditTap,
     this.inputFormatter,
-    this.isStyle = false,
     required this.fillColor,
   });
 
-  // late TextEditingController _controller;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -83,7 +74,7 @@ class CustomInputField extends StatelessWidget {
         //               : const SizedBox(),
         //         ],
         //       ),
-        subtitle == "" ? const SizedBox() : Text(subtitle),
+
         Gap(10),
         TextFormField(
           scrollPhysics: const NeverScrollableScrollPhysics(),
@@ -109,7 +100,6 @@ class CustomInputField extends StatelessWidget {
           validator: validator,
           decoration: InputDecoration(
             prefixIcon: prefixIcon,
-            counterText: isCounttextRequired ? null : "",
             fillColor: fillColor,
             filled: true,
             errorMaxLines: 1,
@@ -118,23 +108,14 @@ class CustomInputField extends StatelessWidget {
             //   borderRadius: BorderRadius.circular(6),
             // ),
             suffixIcon: isSuffixIcon,
-            hintText: hintText,
-            hintStyle: hintstyle,
+            labelText: labelText,
+            labelStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
 
-            border: InputBorder.none,
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: Colors.transparent,
-              ),
-              borderRadius: BorderRadius.circular(6),
-            ),
-            contentPadding: const EdgeInsets.all(12),
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: Colors.transparent,
-              ),
-              borderRadius: BorderRadius.circular(6),
-            ),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+            errorBorder:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+            enabledBorder:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
             errorStyle:
                 const TextStyle(fontSize: 12, color: Colors.red, height: 0.5),
           ),
@@ -143,3 +124,22 @@ class CustomInputField extends StatelessWidget {
     );
   }
 }
+
+
+// TextFormField(
+//               decoration: InputDecoration(
+//                   fillColor: AppColors.textFieldColor,
+//                   filled: true,
+//                   label: Text(
+//                     "Username or email",
+//                     style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
+//                   ),
+//                   prefixIcon: Icon(Icons.person_2_sharp,
+//                       size: 24, color: AppColors.darkGrey),
+//                   border: OutlineInputBorder(
+//                       borderRadius: BorderRadius.circular(12)),
+//                   errorBorder: OutlineInputBorder(
+//                       borderRadius: BorderRadius.circular(12)),
+//                   enabledBorder: OutlineInputBorder(
+//                       borderRadius: BorderRadius.circular(12))),
+//             ),
