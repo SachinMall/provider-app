@@ -16,7 +16,6 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  ValueNotifier<bool> _obsecurePassword = ValueNotifier<bool>(true);
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   // TextEditingController _confirmPasswordController = TextEditingController();

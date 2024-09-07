@@ -49,6 +49,7 @@ class NetworkApiServices extends BaseApiServices {
     //     'Authorization': 'Bearer $token'
     //   };
     // }
+    
     log('🔗 URL::=>  $url \n 👀header:: ${json.encode(header)}');
     log('📦 Payload ::=> ${json.encode(payload)}');
     try {
