@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:provider_mvvm/repository/auth_repository.dart';
-import 'package:provider_mvvm/utils/utils.dart';
+import 'package:shopping_app_provider/repository/auth_repository.dart';
+import 'package:shopping_app_provider/utils/utils.dart';
 
 class AuthViewModel with ChangeNotifier {
   final _myRepo = AuthRepository();

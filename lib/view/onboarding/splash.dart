@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider_mvvm/res/icons_assets/images.dart';
-import 'package:provider_mvvm/utils/routes/routes_name.dart';
+import 'package:shopping_app_provider/res/icons_assets/images.dart';
+import 'package:shopping_app_provider/utils/routes/routes_name.dart';
 
 class SplashActivity extends StatefulWidget {
   const SplashActivity({super.key});

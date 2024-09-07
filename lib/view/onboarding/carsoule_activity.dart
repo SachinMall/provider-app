@@ -2,8 +2,8 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:provider_mvvm/res/icons_assets/images.dart';
-import 'package:provider_mvvm/view/common_widget/carsoule_widget.dart';
+import 'package:shopping_app_provider/res/icons_assets/images.dart';
+import 'package:shopping_app_provider/view/common_widget/carsoule_widget.dart';
 
 class CarsouelActivity extends StatefulWidget {
   const CarsouelActivity({super.key});

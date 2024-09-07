@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
-import 'package:provider_mvvm/res/app_colors.dart';
-import 'package:provider_mvvm/res/icons_assets/images.dart';
-import 'package:provider_mvvm/view/common_widget/custom_textfield.dart';
-import 'package:provider_mvvm/view/common_widget/primary_button.dart';
-import 'package:provider_mvvm/view/onboarding/login_screen.dart';
-import 'package:provider_mvvm/view_model/auth_view_model.dart';
+import 'package:shopping_app_provider/res/app_colors.dart';
+import 'package:shopping_app_provider/res/icons_assets/images.dart';
+import 'package:shopping_app_provider/view/common_widget/custom_textfield.dart';
+import 'package:shopping_app_provider/view/common_widget/primary_button.dart';
+import 'package:shopping_app_provider/view/onboarding/login_screen.dart';
+import 'package:shopping_app_provider/view_model/auth_view_model.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});

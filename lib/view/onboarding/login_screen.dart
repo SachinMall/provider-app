@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:provider_mvvm/res/app_colors.dart';
-import 'package:provider_mvvm/res/icons_assets/images.dart';
-import 'package:provider_mvvm/utils/routes/routes_name.dart';
-import 'package:provider_mvvm/utils/utils.dart';
-import 'package:provider_mvvm/view_model/auth_view_model.dart';
-import 'package:provider_mvvm/view/common_widget/custom_textfield.dart';
-import 'package:provider_mvvm/view/common_widget/primary_button.dart';
+import 'package:shopping_app_provider/res/app_colors.dart';
+import 'package:shopping_app_provider/res/icons_assets/images.dart';
+import 'package:shopping_app_provider/utils/routes/routes_name.dart';
+import 'package:shopping_app_provider/utils/utils.dart';
+import 'package:shopping_app_provider/view_model/auth_view_model.dart';
+import 'package:shopping_app_provider/view/common_widget/custom_textfield.dart';
+import 'package:shopping_app_provider/view/common_widget/primary_button.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Gap(40),
                 PrimaryButton(
-                  isLoading: authViewModel.isLoginLoading,  
+                  isLoading: authViewModel.isLoginLoading,
                   onTap: () {
                     Map data = {
                       'email': _emailController.text.toString(),

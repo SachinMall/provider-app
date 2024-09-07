@@ -1,4 +1,4 @@
-import 'package:provider_mvvm/res/icons_assets/base.dart';
+import 'package:shopping_app_provider/res/icons_assets/base.dart';
 
 class IconsAssets {
   static const _base = BasePaths.baseImagePath;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider_mvvm/utils/routes/routes_name.dart';
-import 'package:provider_mvvm/view/onboarding/forgot_password.dart';
-import 'package:provider_mvvm/view/onboarding/login_screen.dart';
-import 'package:provider_mvvm/view/onboarding/carsoule_activity.dart';
-import 'package:provider_mvvm/view/onboarding/signup.dart';
-import 'package:provider_mvvm/view/onboarding/splash.dart';
+import 'package:shopping_app_provider/utils/routes/routes_name.dart';
+import 'package:shopping_app_provider/view/onboarding/forgot_password.dart';
+import 'package:shopping_app_provider/view/onboarding/login_screen.dart';
+import 'package:shopping_app_provider/view/onboarding/carsoule_activity.dart';
+import 'package:shopping_app_provider/view/onboarding/signup.dart';
+import 'package:shopping_app_provider/view/onboarding/splash.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {

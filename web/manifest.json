@@ -1,6 +1,6 @@
 {
-    "name": "provider_mvvm",
-    "short_name": "provider_mvvm",
+    "name": "shopping_app_provider",
+    "short_name": "shopping_app_provider",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

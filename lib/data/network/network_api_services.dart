@@ -4,8 +4,8 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:provider_mvvm/data/app_exceptions.dart';
-import 'package:provider_mvvm/data/network/base_api_services.dart';
+import 'package:shopping_app_provider/data/app_exceptions.dart';
+import 'package:shopping_app_provider/data/network/base_api_services.dart';
 
 class NetworkApiServices extends BaseApiServices {
   static var client = http.Client();
@@ -49,7 +49,7 @@ class NetworkApiServices extends BaseApiServices {
     //     'Authorization': 'Bearer $token'
     //   };
     // }
-    
+
     log('🔗 URL::=>  $url \n 👀header:: ${json.encode(header)}');
     log('📦 Payload ::=> ${json.encode(payload)}');
     try {

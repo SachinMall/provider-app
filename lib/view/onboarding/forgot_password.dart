@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:provider_mvvm/res/app_colors.dart';
-import 'package:provider_mvvm/view/common_widget/custom_textfield.dart';
-import 'package:provider_mvvm/view/common_widget/primary_button.dart';
+import 'package:shopping_app_provider/res/app_colors.dart';
+import 'package:shopping_app_provider/view/common_widget/custom_textfield.dart';
+import 'package:shopping_app_provider/view/common_widget/primary_button.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});

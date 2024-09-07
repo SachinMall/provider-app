@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-import 'package:provider_mvvm/res/app_colors.dart';
-import 'package:provider_mvvm/res/screen_size.dart';
+import 'package:shopping_app_provider/res/app_colors.dart';
+import 'package:shopping_app_provider/res/screen_size.dart';
 
 class PrimaryButton extends StatelessWidget {
   final void Function() onTap;
