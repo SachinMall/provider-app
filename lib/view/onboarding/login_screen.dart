@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:provider_mvvm/res/app_colors.dart';
 import 'package:provider_mvvm/res/icons_assets/images.dart';
 import 'package:provider_mvvm/utils/routes/routes_name.dart';
+import 'package:provider_mvvm/utils/utils.dart';
 import 'package:provider_mvvm/view_model/auth_view_model.dart';
 import 'package:provider_mvvm/view/common_widget/custom_textfield.dart';
 import 'package:provider_mvvm/view/common_widget/primary_button.dart';
@@ -93,12 +94,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Gap(40),
                 PrimaryButton(
+                  isLoading: authViewModel.isLoginLoading,  
                   onTap: () {
                     Map data = {
-                      'username': _emailController.text.toString(),
+                      'email': _emailController.text.toString(),
                       'password': _passwordController.text.toString(),
                     };
-                    authViewModel.loginApi(data, context);
+                    if (_emailController.text.isEmpty) {
+                      Utils.toastMessage("Email is Required");
+                    } else if (_passwordController.text.isEmpty) {
+                      Utils.toastMessage("Password is Empty");
+                    } else {
+                      authViewModel.loginApi(data, context);
+                    }
                   },
                   text: "Login",
                 ),

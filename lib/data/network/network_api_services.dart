@@ -4,7 +4,6 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 import 'package:provider_mvvm/data/app_exceptions.dart';
 import 'package:provider_mvvm/data/network/base_api_services.dart';
 
@@ -55,7 +54,7 @@ class NetworkApiServices extends BaseApiServices {
     try {
       final response = await client.post(Uri.parse(url),
           body: json.encode(payload), headers: header);
-          
+
       if (kDebugMode) {
         log("status code::${response.statusCode}");
       }

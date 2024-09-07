@@ -1,6 +1,6 @@
 class AppUrls {
-  static var baseUrl = 'https://dummyjson.com/';
+  static var baseUrl = 'https://reqres.in/';
 
-  static var loginUrl = baseUrl + 'auth/login';
-  static var registerUrl = baseUrl + '/api/register';
+  static var loginUrl = baseUrl + 'api/login';
+  static var registerUrl = baseUrl + 'api/register';
 }

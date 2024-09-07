@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 import 'package:provider_mvvm/res/app_colors.dart';
 import 'package:provider_mvvm/res/icons_assets/images.dart';
 import 'package:provider_mvvm/view/common_widget/custom_textfield.dart';
 import 'package:provider_mvvm/view/common_widget/primary_button.dart';
 import 'package:provider_mvvm/view/onboarding/login_screen.dart';
+import 'package:provider_mvvm/view_model/auth_view_model.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -14,8 +16,14 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  ValueNotifier<bool> _obsecurePassword = ValueNotifier<bool>(true);
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  // TextEditingController _confirmPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final authViewModel = Provider.of<AuthViewModel>(context);
     return Scaffold(
       backgroundColor: AppColors.kwhite,
       appBar: AppBar(
@@ -35,6 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Gap(30),
             CustomInputField(
               onChanged: (p0) {},
+              textController: _emailController,
               fillColor: AppColors.textFieldColor,
               prefixIcon: Icon(Icons.person_2_sharp,
                   size: 24, color: AppColors.darkGrey),
@@ -47,6 +56,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Gap(25),
             CustomInputField(
               onChanged: (p0) {},
+              textController: _passwordController,
               fillColor: AppColors.textFieldColor,
               prefixIcon: Icon(Icons.lock, size: 24, color: AppColors.darkGrey),
               textInputType: TextInputType.visiblePassword,
@@ -58,6 +68,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Gap(30),
             CustomInputField(
               onChanged: (p0) {},
+              // textController: _confirmPasswordController,
               fillColor: AppColors.textFieldColor,
               prefixIcon: Icon(Icons.person_2_sharp,
                   size: 24, color: AppColors.darkGrey),
@@ -94,7 +105,15 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             Gap(30),
-            PrimaryButton(onTap: () {}, text: "Create Account"),
+            PrimaryButton(
+                onTap: () {
+                  Map data = {
+                    'email': _emailController.text.toString(),
+                    'password': _passwordController.text.toString(),
+                  };
+                  authViewModel.registerApi(data, context);
+                },
+                text: "Create Account"),
             Gap(50),
             Align(
               alignment: Alignment.center,
