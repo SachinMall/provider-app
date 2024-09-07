@@ -94,19 +94,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Gap(40),
                 PrimaryButton(
-                  isLoading: authViewModel.isLoginLoading,  
+                  isLoading: authViewModel.isLoginLoading,
                   onTap: () {
-                    Map data = {
-                      'email': _emailController.text.toString(),
-                      'password': _passwordController.text.toString(),
-                    };
-                    if (_emailController.text.isEmpty) {
-                      Utils.toastMessage("Email is Required");
-                    } else if (_passwordController.text.isEmpty) {
-                      Utils.toastMessage("Password is Empty");
-                    } else {
-                      authViewModel.loginApi(data, context);
-                    }
+                    Navigator.pushNamed(context, RoutesName.home);
+                    // Map data = {
+                    //   'email': _emailController.text.toString(),
+                    //   'password': _passwordController.text.toString(),
+                    // };
+                    // if (_emailController.text.isEmpty) {
+                    //   Utils.toastMessage("Email is Required");
+                    // } else if (_passwordController.text.isEmpty) {
+                    //   Utils.toastMessage("Password is Empty");
+                    // } else {
+                    //   authViewModel.loginApi(data, context);
+                    // }
                   },
                   text: "Login",
                 ),
