@@ -4,7 +4,7 @@
     "editor.formatOnSave": true,
     "settingsSync.ignoredSettings": [],
     "editor.codeActionsOnSave": {
-        "source.fixAll": true
+        "source.fixAll": "explicit"
     },
     "dart.debugExternalPackageLibraries": false,
     "dart.debugSdkLibraries": false,
