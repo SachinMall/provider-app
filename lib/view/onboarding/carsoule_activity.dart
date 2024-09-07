@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:provider_mvvm/res/icons_assets/images.dart';
-import 'package:provider_mvvm/view/onboarding/common_widget/carsoule_widget.dart';
+import 'package:provider_mvvm/view/common_widget/carsoule_widget.dart';
 
 class CarsouelActivity extends StatefulWidget {
   const CarsouelActivity({super.key});
@@ -39,6 +39,7 @@ class _CarsouelActivityState extends State<CarsouelActivity> {
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
+
     return Stack(
       children: [
         CarsouleWidget(
