@@ -9,11 +9,10 @@ import 'package:provider_mvvm/data/app_exceptions.dart';
 import 'package:provider_mvvm/data/network/base_api_services.dart';
 
 class NetworkApiServices extends BaseApiServices {
-static var client = http.Client();
+  static var client = http.Client();
 
   @override
   Future getGetApiResponse(String url) async {
-    
     log(" url: $url");
     // Map<String, String> header = {};    //! for token to use in the header
     // String token = await userPreference.getAuthToken();
@@ -32,18 +31,16 @@ static var client = http.Client();
       responseJson = jsonDecode(response.body);
     } on SocketException {
       throw FetchDataExceptions('No Internet Connection');
-    } on TimeoutException{
+    } on TimeoutException {
       throw TimeOutExceptions('');
     }
     return responseJson;
   }
 
-
-
   @override
-  Future getPostApiResponse(payload,String url) async {
-     dynamic jsonResponse;
-       Map<String, String> header = {};
+  Future getPostApiResponse(payload, String url) async {
+    dynamic jsonResponse;
+    Map<String, String> header = {'Content-Type': 'application/json'};
     // String token = await userPreference.getAuthToken(); //! for token to use in the header
     // if (url.contains('generateotp') || url.contains('verifyotp')) {
     //   header = {'Content-Type': 'application/json'};
@@ -56,12 +53,14 @@ static var client = http.Client();
     log('🔗 URL::=>  $url \n 👀header:: ${json.encode(header)}');
     log('📦 Payload ::=> ${json.encode(payload)}');
     try {
-      Response response = await post(Uri.parse(url), body: json.decode(payload));
-        if (kDebugMode) {
+      final response = await client.post(Uri.parse(url),
+          body: json.encode(payload), headers: header);
+          
+      if (kDebugMode) {
         log("status code::${response.statusCode}");
       }
-      
-     if (response.statusCode == 200) {
+
+      if (response.statusCode == 200) {
         jsonResponse = jsonDecode(response.body);
         log("✅ Response::=> ${json.encode(jsonResponse)}");
         return jsonResponse;
@@ -69,7 +68,6 @@ static var client = http.Client();
         log('🚫 Error: $url ::=> StatusCode:: ${response.statusCode}');
         return jsonResponse;
       } else {
-
         log('🚫 Error: $url ::=> StatusCode:: ${response.statusCode}');
         return jsonResponse;
       }
@@ -80,7 +78,6 @@ static var client = http.Client();
       return jsonResponse;
     }
   }
-
 
 //! alternate option to throw the error from the api
   // dynamic returnResponse(http.Response response) {

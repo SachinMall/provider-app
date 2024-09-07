@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider_mvvm/res/colors/app_colors.dart';
-import 'package:provider_mvvm/res/scree_size/screen_size.dart';
+import 'package:provider_mvvm/res/app_colors.dart';
+import 'package:provider_mvvm/res/screen_size.dart';
 
 class PrimaryButton extends StatelessWidget {
   final void Function() onTap;

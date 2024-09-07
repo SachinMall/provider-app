@@ -81,6 +81,7 @@ class CustomInputField extends StatelessWidget {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           initialValue: initialValue,
           maxLines: maxLines,
+          
           maxLength: maxLength,
           controller: textController,
           obscureText: obscureText,

@@ -4,6 +4,8 @@ class RoutesName {
 
 //auth screen routes name
   static const String login = 'login_screen';
+  static const String signUp = 'signup_screen';
+  static const String forgot = 'forgot_screen';
 
 //home screen route name
   static const String home = 'home_screen';
