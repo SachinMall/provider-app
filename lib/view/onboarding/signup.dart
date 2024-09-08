@@ -28,18 +28,18 @@ class _SignUpPageState extends State<SignUpPage> {
       appBar: AppBar(
         backgroundColor: AppColors.kwhite,
         shadowColor: AppColors.kwhite,
+        centerTitle: true,
+        title: Text(
+          'Create an account',
+          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+        ),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Create an\naccount',
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 36),
-            ),
-            Gap(30),
             CustomInputField(
               onChanged: (p0) {},
               textController: _emailController,

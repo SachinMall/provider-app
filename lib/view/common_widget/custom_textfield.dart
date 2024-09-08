@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gap/gap.dart';
 
 class CustomInputField extends StatelessWidget {
   final String? initialValue;
@@ -21,6 +20,7 @@ class CustomInputField extends StatelessWidget {
   final bool isAutoValidteRequired;
   final Widget? isSuffixIcon;
   final String? suffixText;
+  final Color? borderColor;
   final Color fillColor;
   final void Function()? onTap;
   final Widget? prefixIcon;
@@ -56,74 +56,69 @@ class CustomInputField extends StatelessWidget {
     this.inputFormatter,
     required this.fillColor,
     this.hintText = '',
+    this.borderColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // title == ""
-        //     ? const SizedBox()
-        //     : Row(
-        //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //         children: [
-        //           Text(title, style: body2TextRegular),
-        //           isEditIcon
-        //               ? GestureDetector(
-        //                   onTap: onEditTap,
-        //                   child: SvgPicture.asset(IconAssets.editIcon))
-        //               : const SizedBox(),
-        //         ],
-        //       ),
+    return TextFormField(
+      scrollPhysics: const NeverScrollableScrollPhysics(),
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      initialValue: initialValue,
+      maxLines: maxLines,
+      maxLength: maxLength,
+      controller: textController,
+      obscureText: obscureText,
+      inputFormatters: inputFormatter,
+      keyboardType: textInputType,
+      readOnly: readOnly,
+      onTap: onTap,
+      onFieldSubmitted: onSubmit,
+      onChanged: (newvalue) {
+        onChanged(newvalue);
+        if (isAutoValidteRequired) {
+          if (newvalue != "") {
+            Form.of(context).validate();
+          }
+        }
+      },
+      validator: validator,
+      decoration: InputDecoration(
+        prefixIcon: prefixIcon,
+        fillColor: fillColor,
 
-        Gap(10),
-        TextFormField(
-          scrollPhysics: const NeverScrollableScrollPhysics(),
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          initialValue: initialValue,
-          maxLines: maxLines,
-          maxLength: maxLength,
-          controller: textController,
-          obscureText: obscureText,
-          inputFormatters: inputFormatter,
-          keyboardType: textInputType,
-          readOnly: readOnly,
-          onTap: onTap,
-          onFieldSubmitted: onSubmit,
-          onChanged: (newvalue) {
-            onChanged(newvalue);
-            if (isAutoValidteRequired) {
-              if (newvalue != "") {
-                Form.of(context).validate();
-              }
-            }
-          },
-          validator: validator,
-          decoration: InputDecoration(
-            prefixIcon: prefixIcon,
-            fillColor: fillColor,
-            hintText: hintText,
-            filled: true,
-            errorMaxLines: 1,
-            // errorBorder: OutlineInputBorder(
-            //   borderSide: const BorderSide(color: AppColor.errorRed),
-            //   borderRadius: BorderRadius.circular(6),
-            // ),
-            suffixIcon: isSuffixIcon,
-            labelText: labelText,
-            labelStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
-
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-            errorBorder:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-            enabledBorder:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-            errorStyle:
-                const TextStyle(fontSize: 12, color: Colors.red, height: 0.5),
+        hintText: hintText.isNotEmpty ? hintText : null,
+        hintStyle: TextStyle(
+          fontSize: 14,
+          color: Colors.black.withOpacity(0.4),
+        ),
+        filled: true,
+        errorMaxLines: 1,
+        // errorBorder: OutlineInputBorder(
+        //   borderSide: const BorderSide(color: AppColor.errorRed),
+        //   borderRadius: BorderRadius.circular(6),
+        // ),
+        suffixIcon: isSuffixIcon,
+        labelText: hintText.isNotEmpty ? null : labelText,
+        labelStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(
+            color: borderColor ?? Colors.black.withOpacity(0.1),
           ),
         ),
-      ],
+        focusedBorder: InputBorder.none,
+
+        errorBorder:
+            OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(
+              color: borderColor ?? Colors.black.withOpacity(0.1),
+            )),
+        errorStyle:
+            const TextStyle(fontSize: 12, color: Colors.red, height: 0.5),
+      ),
     );
   }
 }

@@ -16,7 +16,7 @@ class GettingStartedPage extends StatefulWidget {
 class _GettingStartedPageState extends State<GettingStartedPage> {
   @override
   Widget build(BuildContext context) {
-    // Navigator.pushNamed(context, RoutesName.home);
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -24,8 +24,8 @@ class _GettingStartedPageState extends State<GettingStartedPage> {
             Container(
               child: Image.asset(
                 IconsAssets.gettingStarted,
-                fit: BoxFit.contain,
-                width: ScreenSize.width(context),
+                fit: BoxFit.cover,
+                width: screenWidth,
               ),
             ),
             Positioned(
