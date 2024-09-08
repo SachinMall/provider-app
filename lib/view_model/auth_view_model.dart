@@ -7,14 +7,19 @@ import 'package:shopping_app_provider/utils/utils.dart';
 class AuthViewModel with ChangeNotifier {
   final _myRepo = AuthRepository();
   bool isLoginLoading = false;
+
+
   Future<void> loginApi(dynamic data, BuildContext context) async {
     isLoginLoading = true;
+     notifyListeners();
     try {
       var value = await _myRepo.loginApi(data);
       log(value.toString());
       isLoginLoading = false;
+          notifyListeners();
     } catch (error, stackTrace) {
       isLoginLoading = false;
+       notifyListeners();
       log('Login Error: $error');
       log('Stack Trace: $stackTrace');
       Utils.snackBar(error.toString(), context);

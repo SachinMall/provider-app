@@ -3,7 +3,6 @@ import 'package:gap/gap.dart';
 import 'package:shopping_app_provider/res/app_colors.dart';
 import 'package:shopping_app_provider/res/icons_assets/images.dart';
 import 'package:shopping_app_provider/utils/routes/routes_name.dart';
-import 'package:shopping_app_provider/utils/utils.dart';
 import 'package:shopping_app_provider/view_model/auth_view_model.dart';
 import 'package:shopping_app_provider/view/common_widget/custom_textfield.dart';
 import 'package:shopping_app_provider/view/common_widget/primary_button.dart';
@@ -20,6 +19,14 @@ class _LoginScreenState extends State<LoginScreen> {
   ValueNotifier<bool> _obsecurePassword = ValueNotifier<bool>(true);
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _obsecurePassword.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,23 +100,27 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 Gap(40),
-                PrimaryButton(
-                  isLoading: authViewModel.isLoginLoading,
-                  onTap: () {
-                    Navigator.pushNamed(context, RoutesName.home);
-                    // Map data = {
-                    //   'email': _emailController.text.toString(),
-                    //   'password': _passwordController.text.toString(),
-                    // };
-                    // if (_emailController.text.isEmpty) {
-                    //   Utils.toastMessage("Email is Required");
-                    // } else if (_passwordController.text.isEmpty) {
-                    //   Utils.toastMessage("Password is Empty");
-                    // } else {
-                    //   authViewModel.loginApi(data, context);
-                    // }
+                Consumer<AuthViewModel>(
+                  builder: (context, value, child) {
+                    return PrimaryButton(
+                      isLoading: authViewModel.isLoginLoading,
+                      onTap: () {
+                        Navigator.pushNamed(context, RoutesName.gettingStarted);
+                        // Map data = {
+                        //   'email': _emailController.text.toString(),
+                        //   'password': _passwordController.text.toString(),
+                        // };
+                        // if (_emailController.text.isEmpty) {
+                        //   Utils.toastMessage("Email is Required");
+                        // } else if (_passwordController.text.isEmpty) {
+                        //   Utils.toastMessage("Password is Empty");
+                        // } else {
+                        //   authViewModel.loginApi(data, context);
+                        // }
+                      },
+                      text: "Login",
+                    );
                   },
-                  text: "Login",
                 ),
                 Gap(50),
                 Align(

@@ -8,4 +8,5 @@ class AppColors {
   static const Color txtPrimary = Color(0xff575757);
   static const Color signUpContainerColor = Color(0xffFCF3F6);
   static const Color txtSecondary = Color(0xff676767);
+  static const Color ksecondarywhite = Color(0xffF2F2F2);
 }

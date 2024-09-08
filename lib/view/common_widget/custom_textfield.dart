@@ -26,6 +26,7 @@ class CustomInputField extends StatelessWidget {
   final Widget? prefixIcon;
   final bool isEditIcon;
   final void Function()? onEditTap;
+  final String hintText;
   final List<TextInputFormatter>? inputFormatter;
 
   const CustomInputField({
@@ -54,6 +55,7 @@ class CustomInputField extends StatelessWidget {
     this.onEditTap,
     this.inputFormatter,
     required this.fillColor,
+    this.hintText = '',
   });
 
   @override
@@ -81,7 +83,6 @@ class CustomInputField extends StatelessWidget {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           initialValue: initialValue,
           maxLines: maxLines,
-          
           maxLength: maxLength,
           controller: textController,
           obscureText: obscureText,
@@ -102,6 +103,7 @@ class CustomInputField extends StatelessWidget {
           decoration: InputDecoration(
             prefixIcon: prefixIcon,
             fillColor: fillColor,
+            hintText: hintText,
             filled: true,
             errorMaxLines: 1,
             // errorBorder: OutlineInputBorder(

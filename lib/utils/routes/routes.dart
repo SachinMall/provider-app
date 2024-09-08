@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app_provider/utils/routes/routes_name.dart';
+import 'package:shopping_app_provider/view/home_page.dart/home_screen.dart';
 import 'package:shopping_app_provider/view/onboarding/forgot_password.dart';
+import 'package:shopping_app_provider/view/onboarding/getting-started.dart';
 import 'package:shopping_app_provider/view/onboarding/login_screen.dart';
 import 'package:shopping_app_provider/view/onboarding/carsoule_activity.dart';
 import 'package:shopping_app_provider/view/onboarding/signup.dart';
@@ -26,6 +28,14 @@ class Routes {
       case RoutesName.forgot:
         return MaterialPageRoute(
           builder: (BuildContext context) => const ForgotPassword(),
+        );
+      case RoutesName.gettingStarted:
+        return MaterialPageRoute(
+          builder: (BuildContext context) => const GettingStartedPage(),
+        );
+      case RoutesName.home:
+        return MaterialPageRoute(
+          builder: (BuildContext context) => const HomeScreen(),
         );
       default:
         return MaterialPageRoute(builder: (_) {

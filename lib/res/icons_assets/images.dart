@@ -9,4 +9,5 @@ class IconsAssets {
   static const fbLogo = '$_base/fb-logo.png';
   static const appleLogo = '$_base/apple-logo.png';
   static const googleLogo = '$_base/google-logo.png';
+  static const gettingStarted = '$_base/getting-started.png';
 }
