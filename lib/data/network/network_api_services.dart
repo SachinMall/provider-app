@@ -11,7 +11,7 @@ class NetworkApiServices extends BaseApiServices {
   static var client = http.Client();
 
   @override
-  Future getGetApiResponse(String url) async {
+  Future<dynamic> getGetApiResponse(String url) async {
     log(" url: $url");
     // Map<String, String> header = {};    //! for token to use in the header
     // String token = await userPreference.getAuthToken();
@@ -26,14 +26,27 @@ class NetworkApiServices extends BaseApiServices {
     dynamic responseJson;
     try {
       final response =
-          await http.get(Uri.parse(url)).timeout(const Duration(seconds: 5));
-      responseJson = jsonDecode(response.body);
+          await client.get(Uri.parse(url)).timeout(const Duration(seconds: 10));
+      if (kDebugMode) {
+        log("status code::${response.statusCode}");
+      }
+
+      if (response.statusCode == 200) {
+        responseJson = jsonDecode(response.body);
+        log("✅ Response::=> ${json.encode(responseJson)}");
+        return responseJson;
+      } else if (response.statusCode == 403) {
+        log('🚫 Error: $url ::=> StatusCode:: ${response.statusCode}');
+        return responseJson;
+      } else {
+        log('🚫 Error: $url ::=> StatusCode:: ${response.statusCode}');
+        return responseJson;
+      }
     } on SocketException {
       throw FetchDataExceptions('No Internet Connection');
     } on TimeoutException {
       throw TimeOutExceptions('');
     }
-    return responseJson;
   }
 
   @override

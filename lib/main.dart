@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shopping_app_provider/utils/routes/routes.dart';
 import 'package:shopping_app_provider/utils/routes/routes_name.dart';
 import 'package:shopping_app_provider/view_model/auth_view_model.dart';
+import 'package:shopping_app_provider/view_model/product_view_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => AuthViewModel())],
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => AuthViewModel(),
+        ),
+        ChangeNotifierProvider(create: (_) => ProductViewModel()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',

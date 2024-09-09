@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app_provider/utils/routes/routes_name.dart';
 import 'package:shopping_app_provider/view/home_page.dart/home_screen.dart';
+import 'package:shopping_app_provider/view/home_page.dart/product_desc.dart';
 import 'package:shopping_app_provider/view/onboarding/forgot_password.dart';
 import 'package:shopping_app_provider/view/onboarding/getting-started.dart';
 import 'package:shopping_app_provider/view/onboarding/login_screen.dart';
 import 'package:shopping_app_provider/view/onboarding/carsoule_activity.dart';
 import 'package:shopping_app_provider/view/onboarding/signup.dart';
 import 'package:shopping_app_provider/view/onboarding/splash.dart';
+import 'package:shopping_app_provider/view/root/root_page.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -14,6 +16,11 @@ class Routes {
       case RoutesName.splash:
         return MaterialPageRoute(
             builder: (BuildContext context) => const SplashActivity());
+      case RoutesName.rootpage:
+        final int pageIndex = settings.arguments as int;
+        return MaterialPageRoute(
+          builder: (BuildContext context) => RootPage(selectedIndex: pageIndex),
+        );
       case RoutesName.login:
         return MaterialPageRoute(
             builder: (BuildContext context) => const LoginScreen());
@@ -36,6 +43,12 @@ class Routes {
       case RoutesName.home:
         return MaterialPageRoute(
           builder: (BuildContext context) => const HomeScreen(),
+        );
+      case RoutesName.productDetails:
+        final int productID = settings.arguments as int;
+        return MaterialPageRoute(
+          builder: (BuildContext context) =>
+              ProductDescription(productID: productID),
         );
       default:
         return MaterialPageRoute(builder: (_) {
