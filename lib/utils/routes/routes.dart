@@ -16,11 +16,12 @@ class Routes {
       case RoutesName.splash:
         return MaterialPageRoute(
             builder: (BuildContext context) => const SplashActivity());
-      case RoutesName.rootpage:
-        final int pageIndex = settings.arguments as int;
-        return MaterialPageRoute(
-          builder: (BuildContext context) => RootPage(selectedIndex: pageIndex),
-        );
+     case RoutesName.rootpage:
+  final int pageIndex = settings.arguments != null ? settings.arguments as int : 0;
+  return MaterialPageRoute(
+    builder: (BuildContext context) => RootPage(selectedIndex: pageIndex),
+  );
+
       case RoutesName.login:
         return MaterialPageRoute(
             builder: (BuildContext context) => const LoginScreen());

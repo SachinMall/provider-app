@@ -56,7 +56,8 @@ class _GettingStartedPageState extends State<GettingStartedPage> {
                       width: ScreenSize.width(context) * .8,
                       child: PrimaryButton(
                           onTap: () {
-                            Navigator.pushNamed(context, RoutesName.home);
+                            Navigator.pushNamed(context, RoutesName.rootpage,
+                                arguments: 0);
                           },
                           text: "Getting Started"),
                     ),

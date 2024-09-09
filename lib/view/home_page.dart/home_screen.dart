@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
@@ -320,36 +319,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       drawer: Drawer(),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home, color: Colors.black), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.heart, color: Colors.black),
-              label: "wishlist"),
-          BottomNavigationBarItem(icon: SizedBox.shrink(), label: ""),
-          BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.search, color: Colors.black),
-              label: "search"),
-          BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.settings, color: Colors.black),
-              label: "settings"),
-        ],
-      ),
-      floatingActionButton: Container(
-        padding: EdgeInsets.only(top: 20),
-        child: FloatingActionButton(
-          onPressed: () {
-            // Navigate to cart or handle cart actions
-          },
-          child: Icon(CupertinoIcons.shopping_cart),
-          backgroundColor: AppColors.kwhite,
-          elevation: 4,
-          shape: CircleBorder(),
-          tooltip: 'Cart',
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
