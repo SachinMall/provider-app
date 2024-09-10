@@ -9,6 +9,7 @@ import 'package:shopping_app_provider/res/screen_size.dart';
 import 'package:shopping_app_provider/utils/routes/routes_name.dart';
 import 'package:shopping_app_provider/view/common_widget/custom_textfield.dart';
 import 'package:shopping_app_provider/view_model/product_view_model.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -244,14 +245,10 @@ class _HomeScreenState extends State<HomeScreen> {
             // ),
             Consumer<ProductViewModel>(
               builder: (context, productViewModel, child) {
-                if (productViewModel.isProductListloading) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (productViewModel.error.isNotEmpty) {
-                  return Center(child: Text(productViewModel.error));
-                } else if (productViewModel.productList.isEmpty) {
-                  return Center(child: Text('No products available'));
-                } else {
-                  return GridView.builder(
+                return Skeletonizer(
+                  enabled: productViewModel.isProductListloading,
+                  // ignoreContainers: true,
+                  child: GridView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -260,14 +257,20 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
                     ),
-                    itemCount: productViewModel.productList.length,
+                    itemCount: productViewModel.isProductListloading
+                        ? 6
+                        : productViewModel.productList.length,
                     itemBuilder: (context, index) {
-                      final product = productViewModel.productList[index];
+                      final product = productViewModel.isProductListloading
+                          ? null
+                          : productViewModel.productList[index];
                       return GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(
-                              context, RoutesName.productDetails,
-                              arguments: product.id);
+                          if (product != null) {
+                            Navigator.pushNamed(
+                                context, RoutesName.productDetails,
+                                arguments: product.id);
+                          }
                         },
                         child: Card(
                           color: AppColors.kwhite,
@@ -276,12 +279,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Expanded(
-                                child: Image.network(
-                                  product.image,
-                                  fit: BoxFit.contain,
-                                  width: screenWidth,
-                                  height: screenHeight,
-                                ),
+                                child: product == null
+                                    ? Container(color: Colors.grey[300])
+                                    : Image.network(
+                                        product.image,
+                                        fit: BoxFit.contain,
+                                        width: screenWidth,
+                                        height: screenHeight,
+                                      ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -289,7 +294,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      product.title,
+                                      product?.title ?? 'Product Title',
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
@@ -297,7 +302,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     SizedBox(height: 4),
                                     Text(
-                                      '\$${product.price.toStringAsFixed(2)}',
+                                      product != null
+                                          ? '\$${product.price.toStringAsFixed(2)}'
+                                          : '\$XX.XX',
                                       style: TextStyle(
                                         color: Colors.green,
                                         fontWeight: FontWeight.bold,
@@ -311,8 +318,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     },
-                  );
-                }
+                  ),
+                );
               },
             ),
           ],
