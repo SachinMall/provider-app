@@ -7,7 +7,7 @@ import 'package:shopping_app_provider/view/cart/cart.dart';
 import 'package:shopping_app_provider/view/home_page.dart/home_screen.dart';
 import 'package:shopping_app_provider/view/search/search.dart';
 import 'package:shopping_app_provider/view/settings/settings.dart';
-import 'package:shopping_app_provider/view/wishlist/wishlist.dart';
+import 'package:shopping_app_provider/view/wishlist/fit_page.dart';
 
 final rootPageScrollController = ScrollController(initialScrollOffset: 0.0);
 
@@ -27,11 +27,6 @@ class _RootPageState extends State<RootPage> {
   void initState() {
     super.initState();
     _selectedIndex = widget.selectedIndex;
-    _logCurrentScreen();
-  }
-
-  void _logCurrentScreen() {
-    String screenName = pageOptions[_selectedIndex].runtimeType.toString();
   }
 
   void _onItemTapped(int index) {
@@ -42,7 +37,6 @@ class _RootPageState extends State<RootPage> {
     setState(() {
       _selectedIndex = index;
       HapticFeedback.lightImpact();
-      _logCurrentScreen();
     });
   }
 
@@ -56,27 +50,22 @@ class _RootPageState extends State<RootPage> {
           MaterialPageRoute(builder: (context) => const CartPage()),
         );
         break;
-      case 1: // Wishlist
-        // Handle the action for Wishlist
+      case 1:
         break;
-      case 2: // Cart
-        // Handle the action for Cart (e.g., show cart if already on Cart page)
+      case 2:
         break;
-      case 3: // Search
-        // Handle the action for Search
+      case 3:
         break;
-      case 4: // Settings
-        // Handle the action for Settings
+      case 4:
         break;
       default:
-        // Default action or do nothing
         break;
     }
   }
 
   final pageOptions = [
     const HomeScreen(),
-    const WishList(),
+    const FitPage(),
     const CartPage(),
     const SearchPage(),
     const SettingPage()
@@ -118,16 +107,14 @@ class _RootPageState extends State<RootPage> {
             child: BottomNavigationBar(
               backgroundColor: AppColors.kwhite,
               elevation: 0,
-              // selectedLabelStyle: const TextStyle(
-              //     fontSize: 12,
-              //     fontWeight: FontWeight.w600,
-              //     color: AppColors.kprimarycolor),
-              // unselectedLabelStyle: const TextStyle(
-              //   color: AppColor.bottomlightgrey,
-              //   fontSize: 12,
-              //   fontWeight: FontWeight.w500,
-              // ),
-              unselectedFontSize: 10,
+              selectedLabelStyle: const TextStyle(
+                  fontSize: 14, fontWeight: FontWeight.w600, color: Colors.red),
+              unselectedLabelStyle: const TextStyle(
+                color: Colors.grey,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
+              unselectedFontSize: 12,
               // unselectedItemColor: AppColor.bottomlightgrey,
               showUnselectedLabels: true,
               type: BottomNavigationBarType.fixed,
@@ -146,7 +133,7 @@ class _RootPageState extends State<RootPage> {
                     color: AppColors.kred,
                   ),
                   icon: Icon(CupertinoIcons.heart),
-                  label: 'wishlist',
+                  label: 'Fit',
                 ),
                 BottomNavigationBarItem(
                   icon: SizedBox.shrink(),

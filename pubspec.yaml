@@ -27,6 +27,7 @@ dependencies:
   skeletonizer: ^1.4.2
   health: ^11.1.0
   carousel_slider: ^5.0.0
+  permission_handler: ^11.3.1
 
 
 
