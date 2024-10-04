@@ -65,7 +65,7 @@ class _RootPageState extends State<RootPage> {
 
   final pageOptions = [
     const HomeScreen(),
-    const FitPage(),
+     FitPage(),
     const CartPage(),
     const SearchPage(),
     const SettingPage()

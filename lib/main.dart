@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shopping_app_provider/utils/routes/routes.dart';
 import 'package:shopping_app_provider/utils/routes/routes_name.dart';
 import 'package:shopping_app_provider/view_model/auth_view_model.dart';
+import 'package:shopping_app_provider/view_model/health_services.dart';
 import 'package:shopping_app_provider/view_model/product_view_model.dart';
 
 void main() {
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
           create: (_) => AuthViewModel(),
         ),
         ChangeNotifierProvider(create: (_) => ProductViewModel()),
+        ChangeNotifierProvider(create: (_) => HealthProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
